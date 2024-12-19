@@ -1,0 +1,87 @@
+﻿@model ControleEstoque.Models.Dispositivo
+
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Editar Dispositivo</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <!-- Campo oculto para o ID do dispositivo -->
+                        <input type="hidden" asp-for="id" />
+
+                        <!-- Campo para o modelo -->
+                        <div class="form-group mb-3">
+                            <label asp-for="modelo" class="form-label">Modelo</label>
+                            <input asp-for="modelo" class="form-control" />
+                            <span asp-validation-for="modelo" class="text-danger"></span>
+                        </div>
+
+                        <!-- Campo para a série -->
+                        <div class="form-group mb-3">
+                            <label asp-for="serie" class="form-label">Série</label>
+                            <input asp-for="serie" class="form-control" />
+                            <span asp-validation-for="serie" class="text-danger"></span>
+                        </div>
+
+                        <!-- Campo para o patrimônio -->
+                        <div class="form-group mb-3">
+                            <label asp-for="patrimonio" class="form-label">Patrimônio</label>
+                            <input asp-for="patrimonio" class="form-control" />
+                            <span asp-validation-for="patrimonio" class="text-danger"></span>
+                        </div>
+
+                        <!-- Campo para a quantidade -->
+                        <div class="form-group mb-3">
+                            <label asp-for="quantidade" class="form-label">Quantidade</label>
+                            <input asp-for="quantidade" class="form-control" />
+                            <span asp-validation-for="quantidade" class="text-danger"></span>
+                        </div>
+
+                        <!-- Campo para o nome -->
+                        <div class="form-group mb-3">
+                            <label asp-for="nome" class="form-label">Nome</label>
+                            <input asp-for="nome" class="form-control" />
+                            <span asp-validation-for="nome" class="text-danger"></span>
+                        </div>
+
+                        <!-- Campo para o setor -->
+                        <div class="form-group mb-3">
+                            <label asp-for="setor" class="form-label">Setor</label>
+                            <select asp-for="setor" class="form-control" asp-items="Html.GetEnumSelectList<ControleEstoque.Enum.Setor>()"></select>
+                            <span asp-validation-for="setor" class="text-danger"></span>
+                        </div>
+
+                        <!-- Campo para o status -->
+                        <div class="form-group mb-3">
+                            <label asp-for="status" class="form-label">Status</label>
+                            <select asp-for="status" class="form-control" asp-items="Html.GetEnumSelectList<ControleEstoque.Enum.Status>()"></select>
+                            <span asp-validation-for="status" class="text-danger"></span>
+                        </div>
+
+                        <!-- Botões de ação -->
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <a asp-action="Index" class="btn btn-secondary">Voltar à Lista</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

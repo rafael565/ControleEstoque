@@ -1,0 +1,49 @@
+﻿@model ControleEstoque.Models.Dispositivo
+
+@{
+    ViewData["Title"] = "Excluir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+    <h3 class="text-center">Você tem certeza de que deseja excluir este item?</h3>
+
+    <div class="card shadow mt-4">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">Confirmação de Exclusão</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="text-center mb-4">Detalhes do Dispositivo</h5>
+
+            <dl class="row">
+                <dt class="col-sm-4">Modelo</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.modelo)</dd>
+
+                <dt class="col-sm-4">Série</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.serie)</dd>
+
+                <dt class="col-sm-4">Patrimônio</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.patrimonio)</dd>
+
+                <dt class="col-sm-4">Quantidade</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.quantidade)</dd>
+
+                <dt class="col-sm-4">Nome</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.nome)</dd>
+
+                <dt class="col-sm-4">Setor</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.setor)</dd>
+
+                <dt class="col-sm-4">Status</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.status)</dd>
+            </dl>
+
+            <form asp-action="Delete" class="d-flex justify-content-between mt-4">
+                <input type="hidden" asp-for="id" />
+                <button type="submit" class="btn btn-danger">Excluir</button>
+                <a asp-action="Index" class="btn btn-secondary">Voltar para a Lista</a>
+            </form>
+        </div>
+    </div>
+</div>

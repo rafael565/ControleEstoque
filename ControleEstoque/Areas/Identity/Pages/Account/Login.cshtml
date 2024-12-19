@@ -1,0 +1,149 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-container">
+    <div class="login-box">
+        <h1>@ViewData["Title"]</h1>
+        <form id="account" method="post">
+            <h2>Use uma conta local para fazer login.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <!-- Campo de Email -->
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email" class="form-label">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <!-- Campo de Senha -->
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.Password" class="form-label">Senha</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <!-- Lembre-se de mim -->
+            <div class="checkbox mb-3">
+                <label asp-for="Input.RememberMe" class="form-label">
+                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+            </div>
+
+            <!-- Botão de Login -->
+            <div>
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Entrar</button>
+            </div>
+
+            <!-- Links para recuperação de senha e registro -->
+            <div class="footer-links">
+                <p>
+                    <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu sua senha?</a>
+                </p>
+                <p>
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrar-se como um novo usuário</a>
+                </p>
+                <p>
+                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Reenviar e-mail de confirmação</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    /* Estilo do corpo da página */
+    body {
+        background-color: #f4f6f9;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Container de login */
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #1C1C1C; /* Cor de fundo roxa */
+    }
+
+    /* Caixa de login */
+    .login-box {
+        width: 100%;
+        max-width: 400px;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Título do login */
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #4B0082; /* Cor roxa escura */
+    }
+
+    /* Subtítulo */
+    h2 {
+        text-align: center;
+        color: #6A5ACD; /* Cor roxa mais clara */
+    }
+
+    /* Estilo para o botão de login */
+    .btn-primary {
+        background-color: #4B0082;
+        border: none;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #6A5ACD; /* Cor roxa mais clara ao passar o mouse */
+        }
+
+    /* Estilo para os inputs do formulário */
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    /* Cor das labels */
+    .form-label {
+        color: #333;
+    }
+
+    /* Estilo para os links */
+    a {
+        color: #4fc3f7;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+            color: #4B0082; /* Cor roxa mais escura ao passar o mouse */
+        }
+
+    /* Estilo para a seção de links do rodapé */
+    .footer-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Estilo para o checkbox */
+    .checkbox label {
+        color: #333;
+    }
+
+</style>
